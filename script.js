@@ -12,7 +12,7 @@ function getPlayerChoice() {
       break;
     default:
       console.log("Choose a valid move.");
-      getPlayerChoice();
+      return getPlayerChoice();
   }
   // return choice
   return playerSelection;
