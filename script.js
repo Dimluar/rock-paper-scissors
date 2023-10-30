@@ -153,6 +153,8 @@ function tieRoundMsg(playerSelection, computerSelection) {
 // How to play
 alert(
   `To play "Rock, Paper, Scissors" open the console!
-Just write "game()" and press Return/Enter!
-(Console: Control + Shift + J)`
+(Console: Control + Shift + J)
+Close this window pressing the "Ok" button and then:
+Start to play by writing "game()" and pressing Return/Enter!`
 );
+console.log("Remember: game()");
