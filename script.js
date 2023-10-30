@@ -28,13 +28,23 @@ function getComputerChoice() {
   return computerSelection[selector];
 }
 
-// Count points:
-// Make variables for player and computer points
-// If won the match points plus one
-// If points get to three end game
-
+// One round:
 // Compare both choices:
 // Same choice => tie
 // Rock beats scissors
 // Paper beats rock
 // Scissors beast paper
+// Count points:
+// If won the match points plus one
+
+// Make variables for player and computer points
+// If points get to three end game
+
+// Extra:
+// Capitalize function
+function capitalize(text) {
+  let firstLetter = text.slice(0, 1);
+  firstLetter = firstLetter.toUpperCase();
+  text = text.slice(1);
+  return firstLetter.concat(text);
+}
