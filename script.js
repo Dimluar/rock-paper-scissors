@@ -68,10 +68,45 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Count points:
-// Make variables for player and computer points
-// If won the round points plus one
-// If points get to three end game
+// One game:
+function game() {
+  // Count points:
+  // Make variables for player and computer points
+  let playerPoints = 0;
+  let computerPoints = 0;
+
+  // Game loop
+  let keepGoing = true;
+  while (keepGoing) {
+    let thisRound = playRound(getPlayerChoice(), getComputerChoice());
+
+    // If won the round points plus one
+    if (thisRound === "player") {
+      playerPoints += 1;
+    } else if (thisRound === "computer") {
+      computerPoints += 1;
+    } else {
+      playerPoints += 1;
+      computerPoints += 1;
+    }
+    // Display actual points
+    console.log(`You: ${playerPoints} | Computer: ${computerPoints}`);
+
+    // If points get to five end game
+    if (playerPoints == 5) {
+      console.log("You win! Congrats!");
+      keepGoing = false;
+    } else if (computerPoints == 5) {
+      console.log("You lose! Better luck next time!");
+      keepGoing = false;
+    }
+  }
+
+  // Play again
+  if (confirm("Play again?")) {
+    return game();
+  }
+}
 
 // Extra:
 // Capitalize function
