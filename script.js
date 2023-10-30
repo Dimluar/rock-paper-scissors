@@ -140,3 +140,9 @@ function tieRoundMsg(playerSelection, computerSelection) {
     )}`
   );
 }
+
+// How to play
+alert(
+  `To play "Rock, Paper, Scissors" open the console!
+Just write "game()"!  (Console: Control + Shift + J)`
+);
