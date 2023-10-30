@@ -29,15 +29,76 @@ function getComputerChoice() {
 }
 
 // One round:
-// Compare both choices:
-// Same choice => tie
-// Rock beats scissors
-// Paper beats rock
-// Scissors beast paper
-// Count points:
-// If won the match points plus one
+function playRound(playerSelection, computerSelection) {
+  // Compare both choices:
+  // Same choice => tie
+  if (playerSelection == computerSelection) {
+    console.log(
+      `It's a tie! ${capitalize(playerSelection)} ties ${capitalize(
+        computerSelection
+      )}`
+    );
+    return "tie";
+  }
+  if (playerSelection === "rock") {
+    // Rock beats scissors
+    if (computerSelection === "scissors") {
+      console.log(
+        `You win! ${capitalize(playerSelection)} beats ${capitalize(
+          computerSelection
+        )}`
+      );
+      return "player";
+    } else {
+      console.log(
+        `You lose! ${capitalize(computerSelection)} beats ${capitalize(
+          playerSelection
+        )}`
+      );
+      return "computer";
+    }
+  }
+  if (playerSelection === "paper") {
+    // Paper beats rock
+    if (computerSelection === "rock") {
+      console.log(
+        `You win! ${capitalize(playerSelection)} beats ${capitalize(
+          computerSelection
+        )}`
+      );
+      return "player";
+    } else {
+      console.log(
+        `You lose! ${capitalize(computerSelection)} beats ${capitalize(
+          playerSelection
+        )}`
+      );
+      return "computer";
+    }
+  }
+  if (playerSelection === "scissors") {
+    // Scissors beats paper
+    if (computerSelection === "paper") {
+      console.log(
+        `You win! ${capitalize(playerSelection)} beats ${capitalize(
+          computerSelection
+        )}`
+      );
+      return "player";
+    } else {
+      console.log(
+        `You lose! ${capitalize(computerSelection)} beats ${capitalize(
+          playerSelection
+        )}`
+      );
+      return "computer";
+    }
+  }
+}
 
+// Count points:
 // Make variables for player and computer points
+// If won the round points plus one
 // If points get to three end game
 
 // Extra:
