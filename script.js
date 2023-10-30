@@ -4,8 +4,14 @@
 // Save choice in variable
 
 // Get computer choice:
-// Select random choice from options
-// Save choice in variable
+function getComputerChoice() {
+  // Create array with choice
+  const computerChoices = ["rock", "paper", "scissors"];
+  // Select random choice from options
+  let selector = Math.floor(Math.random() * 3);
+  // Save choice in variable
+  return computerChoices[selector];
+}
 
 // Count points:
 // Make variables for player and computer points
