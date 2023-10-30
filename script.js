@@ -6,11 +6,11 @@
 // Get computer choice:
 function getComputerChoice() {
   // Create array with choice
-  const computerChoices = ["rock", "paper", "scissors"];
+  const computerSelection = ["rock", "paper", "scissors"];
   // Select random choice from options
   let selector = Math.floor(Math.random() * 3);
   // Save choice in variable
-  return computerChoices[selector];
+  return computerSelection[selector];
 }
 
 // Count points:
