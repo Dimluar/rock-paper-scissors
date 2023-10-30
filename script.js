@@ -75,6 +75,9 @@ function game() {
   let playerPoints = 0;
   let computerPoints = 0;
 
+  // Make variable to count rounds
+  let roundCount = 0;
+
   // Game loop
   let keepGoing = true;
   while (keepGoing) {
@@ -92,12 +95,18 @@ function game() {
     // Display actual points
     console.log(`You: ${playerPoints} | Computer: ${computerPoints}`);
 
+    //Increment round when finish
+    roundCount += 1;
+
     // If points get to five end game
-    if (playerPoints == 5) {
-      console.log("You win! Congrats!");
-      keepGoing = false;
-    } else if (computerPoints == 5) {
-      console.log("You lose! Better luck next time!");
+    if (roundCount == 5) {
+      if (playerPoints > computerPoints) {
+        console.log("You win! Congrats!");
+      } else if (playerPoints < computerPoints) {
+        console.log("You lose! Better luck next time!");
+      } else {
+        console.log("It's a tie! Try again!");
+      }
       keepGoing = false;
     }
   }
