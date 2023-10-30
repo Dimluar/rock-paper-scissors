@@ -33,64 +33,36 @@ function playRound(playerSelection, computerSelection) {
   // Compare both choices:
   // Same choice => tie
   if (playerSelection == computerSelection) {
-    console.log(
-      `It's a tie! ${capitalize(playerSelection)} ties ${capitalize(
-        computerSelection
-      )}`
-    );
+    tieRoundMsg(playerSelection, computerSelection);
     return "tie";
   }
   if (playerSelection === "rock") {
     // Rock beats scissors
     if (computerSelection === "scissors") {
-      console.log(
-        `You win! ${capitalize(playerSelection)} beats ${capitalize(
-          computerSelection
-        )}`
-      );
+      winRoundMsg(playerSelection, computerSelection);
       return "player";
     } else {
-      console.log(
-        `You lose! ${capitalize(computerSelection)} beats ${capitalize(
-          playerSelection
-        )}`
-      );
+      loseRoundMsg(playerSelection, computerSelection);
       return "computer";
     }
   }
   if (playerSelection === "paper") {
     // Paper beats rock
     if (computerSelection === "rock") {
-      console.log(
-        `You win! ${capitalize(playerSelection)} beats ${capitalize(
-          computerSelection
-        )}`
-      );
+      winRoundMsg(playerSelection, computerSelection);
       return "player";
     } else {
-      console.log(
-        `You lose! ${capitalize(computerSelection)} beats ${capitalize(
-          playerSelection
-        )}`
-      );
+      loseRoundMsg(playerSelection, computerSelection);
       return "computer";
     }
   }
   if (playerSelection === "scissors") {
     // Scissors beats paper
     if (computerSelection === "paper") {
-      console.log(
-        `You win! ${capitalize(playerSelection)} beats ${capitalize(
-          computerSelection
-        )}`
-      );
+      winRoundMsg(playerSelection, computerSelection);
       return "player";
     } else {
-      console.log(
-        `You lose! ${capitalize(computerSelection)} beats ${capitalize(
-          playerSelection
-        )}`
-      );
+      loseRoundMsg(playerSelection, computerSelection);
       return "computer";
     }
   }
@@ -108,4 +80,28 @@ function capitalize(text) {
   firstLetter = firstLetter.toUpperCase();
   text = text.slice(1);
   return firstLetter.concat(text);
+}
+// Announce won round
+function winRoundMsg(playerSelection, computerSelection) {
+  console.log(
+    `You win! ${capitalize(playerSelection)} beats ${capitalize(
+      computerSelection
+    )}`
+  );
+}
+// Announce lost round
+function loseRoundMsg(playerSelection, computerSelection) {
+  console.log(
+    `You lose! ${capitalize(computerSelection)} beats ${capitalize(
+      playerSelection
+    )}`
+  );
+}
+// Announce tied round
+function tieRoundMsg(playerSelection, computerSelection) {
+  console.log(
+    `It's a tie! ${capitalize(playerSelection)} ties ${capitalize(
+      computerSelection
+    )}`
+  );
 }
