@@ -1,0 +1,20 @@
+:root {
+  --bg-color: #365b3e;
+  --txt-color: #fff9ea;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Libre Bodoni", serif;
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+}
