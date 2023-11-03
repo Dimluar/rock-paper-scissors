@@ -97,4 +97,5 @@ footer {
   display: block;
   margin: auto;
   width: 100%;
+  pointer-events: none;
 }

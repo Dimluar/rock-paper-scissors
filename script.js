@@ -13,63 +13,27 @@ document.addEventListener("click", (e) => {
       divText.textContent = "Make your choice:";
       for (btn of choiceBtnList) {
         btn.style.display = "flex";
-        console.log(btn);
       }
   }
 });
 
 function game() {
-  let playerPoints = 0;
-  let computerPoints = 0;
+  let points = [0, 0];
+  let thisRound;
 
-  let roundCount = 0;
-
-  let keepGoing = true;
-  while (keepGoing) {
-    let thisRound = playRound(getPlayerChoice(), getComputerChoice());
-
-    if (thisRound === "player") {
-      playerPoints += 1;
-    } else if (thisRound === "computer") {
-      computerPoints += 1;
-    } else {
-      playerPoints += 1;
-      computerPoints += 1;
+  document.addEventListener("click", (e) => {
+    switch (e.target) {
+      case rockBtn:
+        thisRound = playRound("rock", getComputerChoice());
+        break;
+      case paperBtn:
+        thisRound = playRound("paper", getComputerChoice());
+        break;
+      case scissorsBtn:
+        thisRound = playRound("scissors", getComputerChoice());
+        break;
     }
-    console.log(`You: ${playerPoints} | Computer: ${computerPoints}`);
-
-    roundCount += 1;
-
-    if (roundCount == 5) {
-      if (playerPoints > computerPoints) {
-        console.log("You win! Congrats!");
-      } else if (playerPoints < computerPoints) {
-        console.log("You lose! Better luck next time!");
-      } else {
-        console.log("It's a tie! Try again!");
-      }
-      keepGoing = false;
-    }
-  }
-
-  if (confirm("Play again?")) {
-    return game();
-  }
-}
-
-function getPlayerChoice() {
-  let playerSelection = prompt("Your choice?");
-  playerSelection = playerSelection.toLowerCase();
-  switch (playerSelection) {
-    case "rock":
-    case "paper":
-    case "scissors":
-      break;
-    default:
-      console.log("Choose a valid move.");
-      return getPlayerChoice();
-  }
-  return playerSelection;
+  });
 }
 
 function getComputerChoice() {
