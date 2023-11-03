@@ -1,3 +1,62 @@
+playBtn = document.querySelector("#play");
+divText = document.querySelector(".text-container p");
+
+choiceBtnList = document.querySelectorAll(".choice-btn");
+rockBtn = choiceBtnList[0];
+paperBtn = choiceBtnList[1];
+scissorsBtn = choiceBtnList[2];
+
+document.addEventListener("click", (e) => {
+  switch (e.target) {
+    case playBtn:
+      playBtn.style.display = "none";
+      divText.textContent = "Make your choice:";
+      for (btn of choiceBtnList) {
+        btn.style.display = "flex";
+        console.log(btn);
+      }
+  }
+});
+
+function game() {
+  let playerPoints = 0;
+  let computerPoints = 0;
+
+  let roundCount = 0;
+
+  let keepGoing = true;
+  while (keepGoing) {
+    let thisRound = playRound(getPlayerChoice(), getComputerChoice());
+
+    if (thisRound === "player") {
+      playerPoints += 1;
+    } else if (thisRound === "computer") {
+      computerPoints += 1;
+    } else {
+      playerPoints += 1;
+      computerPoints += 1;
+    }
+    console.log(`You: ${playerPoints} | Computer: ${computerPoints}`);
+
+    roundCount += 1;
+
+    if (roundCount == 5) {
+      if (playerPoints > computerPoints) {
+        console.log("You win! Congrats!");
+      } else if (playerPoints < computerPoints) {
+        console.log("You lose! Better luck next time!");
+      } else {
+        console.log("It's a tie! Try again!");
+      }
+      keepGoing = false;
+    }
+  }
+
+  if (confirm("Play again?")) {
+    return game();
+  }
+}
+
 function getPlayerChoice() {
   let playerSelection = prompt("Your choice?");
   playerSelection = playerSelection.toLowerCase();
@@ -53,45 +112,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let playerPoints = 0;
-  let computerPoints = 0;
-
-  let roundCount = 0;
-
-  let keepGoing = true;
-  while (keepGoing) {
-    let thisRound = playRound(getPlayerChoice(), getComputerChoice());
-
-    if (thisRound === "player") {
-      playerPoints += 1;
-    } else if (thisRound === "computer") {
-      computerPoints += 1;
-    } else {
-      playerPoints += 1;
-      computerPoints += 1;
-    }
-    console.log(`You: ${playerPoints} | Computer: ${computerPoints}`);
-
-    roundCount += 1;
-
-    if (roundCount == 5) {
-      if (playerPoints > computerPoints) {
-        console.log("You win! Congrats!");
-      } else if (playerPoints < computerPoints) {
-        console.log("You lose! Better luck next time!");
-      } else {
-        console.log("It's a tie! Try again!");
-      }
-      keepGoing = false;
-    }
-  }
-
-  if (confirm("Play again?")) {
-    return game();
-  }
-}
-
 function capitalize(text) {
   let firstLetter = text.slice(0, 1);
   firstLetter = firstLetter.toUpperCase();
@@ -119,18 +139,3 @@ function tieRoundMsg(playerSelection, computerSelection) {
     )}`
   );
 }
-
-playBtn = document.querySelector("#play");
-divText = document.querySelector(".text-container p");
-choiceBtnList = document.querySelectorAll(".choice-btn");
-
-document.addEventListener("click", (e) => {
-  switch (e.target) {
-    case playBtn:
-      playBtn.style.display = "none";
-      divText.textContent = "Make your choice:";
-      for (btn of choiceBtnList) {
-        btn.style.display = "flex";
-      }
-  }
-});
