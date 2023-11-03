@@ -122,11 +122,15 @@ function tieRoundMsg(playerSelection, computerSelection) {
 
 playBtn = document.querySelector("#play");
 divText = document.querySelector(".text-container p");
+choiceBtnList = document.querySelectorAll(".choice-btn");
 
 document.addEventListener("click", (e) => {
   switch (e.target) {
     case playBtn:
       playBtn.style.display = "none";
       divText.textContent = "Make your choice:";
+      for (btn of choiceBtnList) {
+        btn.style.display = "flex";
+      }
   }
 });
