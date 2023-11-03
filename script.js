@@ -1,10 +1,13 @@
-playBtn = document.querySelector("#play");
-divText = document.querySelector(".text-container p");
+const playBtn = document.querySelector("#play");
+const divText = document.querySelector(".text-container p");
 
-choiceBtnList = document.querySelectorAll(".choice-btn");
-rockBtn = choiceBtnList[0];
-paperBtn = choiceBtnList[1];
-scissorsBtn = choiceBtnList[2];
+const choiceBtnList = document.querySelectorAll(".choice-btn");
+const rockBtn = choiceBtnList[0];
+const paperBtn = choiceBtnList[1];
+const scissorsBtn = choiceBtnList[2];
+
+const pointText = document.querySelector(".points");
+const roundText = document.querySelector(".round");
 
 let points, thisRound;
 
@@ -16,6 +19,10 @@ document.addEventListener("click", (e) => {
       for (btn of choiceBtnList) {
         btn.style.display = "flex";
       }
+
+      pointText.textContent = "Player: 0 | Computer: 0";
+      roundText.textContent = "";
+
       points = [0, 0];
       break;
     case rockBtn:
@@ -39,7 +46,9 @@ function game(points, thisRound) {
   } else if (thisRound === "computer") {
     points[1] += 1;
   }
-  console.log(points);
+
+  pointText.textContent = `Player: ${points[0]} | Computer: ${points[1]}`;
+
   return points;
 }
 
@@ -90,23 +99,17 @@ function capitalize(text) {
   return firstLetter.concat(text);
 }
 function winRoundMsg(playerSelection, computerSelection) {
-  console.log(
-    `You win! ${capitalize(playerSelection)} beats ${capitalize(
-      computerSelection
-    )}`
-  );
+  roundText.textContent = `You win! ${capitalize(
+    playerSelection
+  )} beats ${capitalize(computerSelection)}`;
 }
 function loseRoundMsg(playerSelection, computerSelection) {
-  console.log(
-    `You lose! ${capitalize(computerSelection)} beats ${capitalize(
-      playerSelection
-    )}`
-  );
+  roundText.textContent = `You lose! ${capitalize(
+    computerSelection
+  )} beats ${capitalize(playerSelection)}`;
 }
 function tieRoundMsg(playerSelection, computerSelection) {
-  console.log(
-    `It's a tie! ${capitalize(playerSelection)} ties ${capitalize(
-      computerSelection
-    )}`
-  );
+  roundText.textContent = `It's a tie! ${capitalize(
+    playerSelection
+  )} ties with ${capitalize(computerSelection)}`;
 }
