@@ -41,6 +41,7 @@ document.addEventListener("click", (e) => {
 });
 
 function game(points, thisRound) {
+  // Point counter
   if (thisRound === "player") {
     points[0] += 1;
   } else if (thisRound === "computer") {
@@ -49,6 +50,21 @@ function game(points, thisRound) {
 
   pointText.textContent = `Player: ${points[0]} | Computer: ${points[1]}`;
 
+  // Endgame
+  let endgame = false;
+  if (points[0] == 5) {
+    divText.textContent = "Victory! Good job!";
+    endgame = true;
+  } else if (points[1] == 5) {
+    divText.textContent = "Defeat! Better luck next time!";
+    endgame = true;
+  }
+
+  if (endgame) {
+    for (btn of choiceBtnList) btn.style.display = "none";
+    playBtn.textContent = "Play again";
+    playBtn.style.display = "flex";
+  }
   return points;
 }
 
