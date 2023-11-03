@@ -6,6 +6,8 @@ rockBtn = choiceBtnList[0];
 paperBtn = choiceBtnList[1];
 scissorsBtn = choiceBtnList[2];
 
+let points, thisRound;
+
 document.addEventListener("click", (e) => {
   switch (e.target) {
     case playBtn:
@@ -14,32 +16,22 @@ document.addEventListener("click", (e) => {
       for (btn of choiceBtnList) {
         btn.style.display = "flex";
       }
-      play();
+      points = [0, 0];
+      break;
+    case rockBtn:
+      thisRound = playRound("rock", getComputerChoice());
+      points = game(points, thisRound);
+      break;
+    case paperBtn:
+      thisRound = playRound("paper", getComputerChoice());
+      points = game(points, thisRound);
+      break;
+    case scissorsBtn:
+      thisRound = playRound("scissors", getComputerChoice());
+      points = game(points, thisRound);
+      break;
   }
 });
-
-function play() {
-  let points = [0, 0];
-  let thisRound;
-
-  document.addEventListener("click", (e) => {
-    switch (e.target) {
-      case rockBtn:
-        thisRound = playRound("rock", getComputerChoice());
-        points = game(points, thisRound);
-        break;
-      case paperBtn:
-        thisRound = playRound("paper", getComputerChoice());
-        points = game(points, thisRound);
-        break;
-      case scissorsBtn:
-        thisRound = playRound("scissors", getComputerChoice());
-        points = game(points, thisRound);
-        console.log(points);
-        break;
-    }
-  });
-}
 
 function game(points, thisRound) {
   if (thisRound === "player") {
@@ -47,6 +39,7 @@ function game(points, thisRound) {
   } else if (thisRound === "computer") {
     points[1] += 1;
   }
+  console.log(points);
   return points;
 }
 
