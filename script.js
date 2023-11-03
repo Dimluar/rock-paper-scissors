@@ -1,10 +1,6 @@
-// Get player choice:
 function getPlayerChoice() {
-  // Ask the player for their choice
   let playerSelection = prompt("Your choice?");
-  // Transform choice to lower case
   playerSelection = playerSelection.toLowerCase();
-  // Make sure it's a valid choice
   switch (playerSelection) {
     case "rock":
     case "paper":
@@ -14,30 +10,21 @@ function getPlayerChoice() {
       console.log("Choose a valid move.");
       return getPlayerChoice();
   }
-  // return choice
   return playerSelection;
 }
 
-// Get computer choice:
 function getComputerChoice() {
-  // Create array with choice
   const computerSelection = ["rock", "paper", "scissors"];
-  // Select random choice from options
   let selector = Math.floor(Math.random() * 3);
-  // return choice
   return computerSelection[selector];
 }
 
-// One round:
 function playRound(playerSelection, computerSelection) {
-  // Compare both choices:
-  // Same choice => tie
   if (playerSelection == computerSelection) {
     tieRoundMsg(playerSelection, computerSelection);
     return "tie";
   }
   if (playerSelection === "rock") {
-    // Rock beats scissors
     if (computerSelection === "scissors") {
       winRoundMsg(playerSelection, computerSelection);
       return "player";
@@ -47,7 +34,6 @@ function playRound(playerSelection, computerSelection) {
     }
   }
   if (playerSelection === "paper") {
-    // Paper beats rock
     if (computerSelection === "rock") {
       winRoundMsg(playerSelection, computerSelection);
       return "player";
@@ -57,7 +43,6 @@ function playRound(playerSelection, computerSelection) {
     }
   }
   if (playerSelection === "scissors") {
-    // Scissors beats paper
     if (computerSelection === "paper") {
       winRoundMsg(playerSelection, computerSelection);
       return "player";
@@ -68,22 +53,16 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// One game:
 function game() {
-  // Count points:
-  // Make variables for player and computer points
   let playerPoints = 0;
   let computerPoints = 0;
 
-  // Make variable to count rounds
   let roundCount = 0;
 
-  // Game loop
   let keepGoing = true;
   while (keepGoing) {
     let thisRound = playRound(getPlayerChoice(), getComputerChoice());
 
-    // If won the round points plus one
     if (thisRound === "player") {
       playerPoints += 1;
     } else if (thisRound === "computer") {
@@ -92,13 +71,10 @@ function game() {
       playerPoints += 1;
       computerPoints += 1;
     }
-    // Display actual points
     console.log(`You: ${playerPoints} | Computer: ${computerPoints}`);
 
-    //Increment round when finish
     roundCount += 1;
 
-    // If points get to five end game
     if (roundCount == 5) {
       if (playerPoints > computerPoints) {
         console.log("You win! Congrats!");
@@ -111,21 +87,17 @@ function game() {
     }
   }
 
-  // Play again
   if (confirm("Play again?")) {
     return game();
   }
 }
 
-// Extra:
-// Capitalize function
 function capitalize(text) {
   let firstLetter = text.slice(0, 1);
   firstLetter = firstLetter.toUpperCase();
   text = text.slice(1);
   return firstLetter.concat(text);
 }
-// Announce won round
 function winRoundMsg(playerSelection, computerSelection) {
   console.log(
     `You win! ${capitalize(playerSelection)} beats ${capitalize(
@@ -133,7 +105,6 @@ function winRoundMsg(playerSelection, computerSelection) {
     )}`
   );
 }
-// Announce lost round
 function loseRoundMsg(playerSelection, computerSelection) {
   console.log(
     `You lose! ${capitalize(computerSelection)} beats ${capitalize(
@@ -141,7 +112,6 @@ function loseRoundMsg(playerSelection, computerSelection) {
     )}`
   );
 }
-// Announce tied round
 function tieRoundMsg(playerSelection, computerSelection) {
   console.log(
     `It's a tie! ${capitalize(playerSelection)} ties ${capitalize(
@@ -150,7 +120,6 @@ function tieRoundMsg(playerSelection, computerSelection) {
   );
 }
 
-// How to play
 alert(
   `To play "Rock, Paper, Scissors" open the console!
 (Console: Control + Shift + J)
