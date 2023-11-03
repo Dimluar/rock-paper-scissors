@@ -11,10 +11,90 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   font-family: "Libre Bodoni", serif;
   background-color: var(--bg-color);
   color: var(--txt-color);
+  text-shadow: 0px 0px 2px black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+
+  padding: 25px 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0;
+  font-size: 20px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  height: 20vh;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 2vw;
+
+  flex: 1;
+}
+
+.btn {
+  background-color: var(--txt-color);
+  color: var(--bg-color);
+  border: none;
+  font-family: inherit;
+  text-shadow: 0px 0px 2px white;
+}
+
+.btn:hover {
+  background-color: #fff9eaca;
+}
+
+.play-btn {
+  border-radius: 10px;
+  font-size: 2em;
+  padding: 15px 25px;
+}
+
+.choice-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 15vw;
+  padding: 2vw;
+  border-radius: 50%;
+}
+
+.choice-btn img {
+  display: block;
+  margin: auto;
+  width: 100%;
 }
