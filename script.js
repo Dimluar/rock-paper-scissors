@@ -14,10 +14,11 @@ document.addEventListener("click", (e) => {
       for (btn of choiceBtnList) {
         btn.style.display = "flex";
       }
+      play();
   }
 });
 
-function game() {
+function play() {
   let points = [0, 0];
   let thisRound;
 
@@ -25,15 +26,28 @@ function game() {
     switch (e.target) {
       case rockBtn:
         thisRound = playRound("rock", getComputerChoice());
+        points = game(points, thisRound);
         break;
       case paperBtn:
         thisRound = playRound("paper", getComputerChoice());
+        points = game(points, thisRound);
         break;
       case scissorsBtn:
         thisRound = playRound("scissors", getComputerChoice());
+        points = game(points, thisRound);
+        console.log(points);
         break;
     }
   });
+}
+
+function game(points, thisRound) {
+  if (thisRound === "player") {
+    points[0] += 1;
+  } else if (thisRound === "computer") {
+    points[1] += 1;
+  }
+  return points;
 }
 
 function getComputerChoice() {
