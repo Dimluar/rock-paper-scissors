@@ -120,10 +120,13 @@ function tieRoundMsg(playerSelection, computerSelection) {
   );
 }
 
-alert(
-  `To play "Rock, Paper, Scissors" open the console!
-(Console: Control + Shift + J)
-Close this window pressing the "Ok" button and then:
-Start to play by writing "game()" and pressing Return/Enter!`
-);
-console.log("Remember: game()");
+playBtn = document.querySelector("#play");
+divText = document.querySelector(".text-container p");
+
+document.addEventListener("click", (e) => {
+  switch (e.target) {
+    case playBtn:
+      playBtn.style.display = "none";
+      divText.textContent = "Make your choice:";
+  }
+});
